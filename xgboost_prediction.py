@@ -149,7 +149,7 @@ def create_sample_input():
         'Course': 33,
         'Daytime_evening_attendance': 1,
         'Previous_qualification': 1,
-        'Nationality': 1,
+        'Nacionality': 1,
         'Mother_qualification': 19,
         'Father_qualification': 13,
         'Mother_occupation': 4,
