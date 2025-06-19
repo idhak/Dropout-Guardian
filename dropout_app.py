@@ -56,6 +56,10 @@ st.markdown("""
         border-left: 5px solid #4caf50;
         color: #000000;
     }
+    .blue-text {
+        color: #1f77b4 !important;
+        font-weight: bold;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -201,11 +205,11 @@ if st.sidebar.button("🔮 Prediksi Dropout"):
         # Tampilkan hasil dan rekomendasi
         st.markdown(f"""
         <div class="{risk_class}">
-            <h3>{risk_color} Tingkat Risiko: {risk_level}</h3>
+            <h3 class="blue-text">{risk_color} Tingkat Risiko: {risk_level}</h3>
             <p><strong>Probabilitas Dropout:</strong> {prob:.2%}</p>
             <p><strong>Prediksi:</strong> {label}</p>
             <hr>
-            <h4>🛠️ Rekomendasi Tindakan:</h4>
+            <h4 class="blue-text">🛠️ Rekomendasi Tindakan:</h4>
             <ul>
                 {''.join(f"<li>{rec}</li>" for rec in recommendations)}
             </ul>
