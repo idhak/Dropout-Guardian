@@ -14,24 +14,11 @@ import warnings
 warnings.filterwarnings('ignore')  # Nonaktifkan peringatan runtime
 
 class StudentDropoutPredictor:
-    def __init__(self, model_path='xgboost_model/xgboost_model.joblib', feature_order_path='xgboost_model/feature_order.joblib'):
-        """
-        Inisialisasi prediktor dengan model yang sudah dilatih dan urutan fitur
-
-        Args:
-            model_path (str): Path ke model XGBoost yang sudah disimpan
-            feature_order_path (str): Path ke file urutan fitur yang disimpan
-        """
-        try:
-            self.model = joblib.load(model_path)
-            self.feature_order = joblib.load(feature_order_path)
-            print("Model dan urutan fitur berhasil dimuat.")
-        except FileNotFoundError as e:
-            print(f"Error: File tidak ditemukan - {e}")
-            raise
-        except Exception as e:
-            print(f"Error saat memuat model: {e}")
-            raise
+    def __init__(self):
+        model_path = os.path.join('xgboost_model', 'xgboost_model.joblib')
+        feature_path = os.path.join('xgboost_model', 'feature_order.joblib')
+        self.model = joblib.load(model_path)
+        self.feature_order = joblib.load(feature_path)
 
     def preprocess_input(self, input_data):
         """
