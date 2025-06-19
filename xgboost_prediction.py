@@ -1,5 +1,11 @@
 # === Library Umum ===
-import xgboost as xgb
+try:
+    import xgboost as xgb
+except ImportError:
+    import subprocess
+    import sys
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "xgboost==1.7.6"])
+    import xgboost as xgb
 import pandas as pd
 import numpy as np
 import joblib
