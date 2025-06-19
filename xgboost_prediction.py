@@ -1,6 +1,7 @@
 # === Library Umum ===
 try:
     import xgboost as xgb
+    print(f"XGBoost version: {xgb.__version__}")  # Debug version
 except ImportError:
     import subprocess
     import sys
@@ -18,7 +19,14 @@ class StudentDropoutPredictor:
     def __init__(self):
         model_path = os.path.join('xgboost_model', 'xgboost_model.joblib')
         feature_path = os.path.join('xgboost_model', 'feature_order.joblib')
+        
+        # Load model dengan handle parameter yang hilang
         self.model = joblib.load(model_path)
+        
+        # Tambahkan penanganan khusus untuk XGBoost
+        if hasattr(self.model, 'set_params'):  # Jika model adalah XGBoost
+            self.model.set_params(use_label_encoder=False, eval_metric='logloss')
+        
         self.feature_order = joblib.load(feature_path)
 
     def preprocess_input(self, input_data):
